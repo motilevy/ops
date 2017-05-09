@@ -1,0 +1,12 @@
+# restart rsyslog service on a node, use with
+# ansible-playbook -i ec2.py -l group restart-syslog.yml
+
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: restart rsyslog
+      service:
+        name: rsyslog
+        state: restarted
+
